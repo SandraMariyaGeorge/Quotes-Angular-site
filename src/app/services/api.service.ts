@@ -1,43 +1,9 @@
-import { Component } from '@angular/core';
-import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { CardsComponent } from '../../ui/cards/cards.component';
-import { CarousalComponent } from '../../ui/carousal/carousal.component';
-@Component({
-  selector: 'app-all-quotes',
-  imports: [CardsComponent, CarouselModule ,CarousalComponent],
-  templateUrl: './all-quotes.component.html',
-  styleUrl: './all-quotes.component.scss'
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
 })
-export class AllQuotesComponent {
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
-  carousalimg = [
-    {id:1, image: "https://www.incredibleindia.gov.in/content/dam/incredible-india/images/arunachal-pradesh/external-blogs/likabali-to-mechuka/Likabali-to-Mechuka1-popular.jpeg"},
-    {id:2, image: "https://s7ap1.scene7.com/is/image/incredibleindia/kanthalloor-village-kerala-rural-hero?qlt=82&ts=1726643529094"},
-    {id:3, image: "https://www.incredibleindia.gov.in/content/dam/incredible-india/images/kerala/munnar/external-blogs/munnar-travel-blog/munnar-travel-blog-masthead-popular-popular.jpg",}
-  ]
+export class ApiService {
   states = [
     {
       "id": 1,
@@ -208,5 +174,13 @@ export class AllQuotesComponent {
       "image": "https://www.incredibleindia.gov.in/content/dam/incredible-india/images/tripura/state/ujjayanta-palace-agartala-tripura-1-tripura-search-thum.jpg"
     }
   ]
-  
+
+  constructor() { }
+  getStates() {
+    return this.states;
+  }
+
+  getStateid(id: number) {
+    return this.states.find(state => state.id == id);
+  }
 }

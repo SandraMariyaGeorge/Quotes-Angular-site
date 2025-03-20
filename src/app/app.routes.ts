@@ -6,4 +6,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'random-quote', pathMatch: 'full' },
   { path: 'random-quote', component: RandomQuotesComponent },
   { path: 'all-quotes', component: AllQuotesComponent }
+  // { path: '**',component:NotFoundComponent } // Redirect any unknown routes to Home
+
 ];
